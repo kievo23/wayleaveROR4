@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Wayleaves</h1>
+
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Permit no</th>
+      <th>Route</th>
+      <th>Carriageway</th>
+      <th>Footpath</th>
+      <th>Verge</th>
+      <th>Amount paid</th>
+      <th>Date paid</th>
+      <th>Renewal Date</th>
+      <th>Remarks</th>
+      <th>Permit</th>
+      <th>Wayleave</th>
+      <th>Invoice</th>
+      <th>Show</th>
+      <% if can? :update, @data %>
+        <th>Edit</th>
+      <% end %>
+      <% if can? :destroy, @data %>
+        <th>Destroy</th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @data.each do |datum| %>
+      <tr>
+        <td><%= datum.permit_no %></td>
+        <td><%= datum.route %></td>
+        <td><%= datum.carriageway %></td>
+        <td><%= datum.footpath %></td>
+        <td><%= datum.verge %></td>
+        <td><%= datum.amount_paid %> KSh</td>
+        <td><%= datum.date_paid %></td>
+        <td><%= datum.Renewal_date %></td>
+        <td><%= datum.Remarks %></td>
+        <td><%= link_to("#{datum.permit}",controller: 'data',action: 'download',id: datum.id,permit: datum.permit) %></td>
+        <td><%= link_to("#{datum.wayleave_file}",controller: 'data',action: 'downloadwayleave',id: datum.id,wayleave_file: datum.wayleave_file) %></td>
+        <td><%= link_to("#{datum.invoice}",controller: 'data',action: 'downloadsof',id: datum.id,invoice: datum.invoice) %></td>
+        <td><%= link_to 'Show', datum %></td>
+        <% if can? :update, datum %>
+          <td><%= link_to 'Edit', edit_datum_path(datum) %></td>
+        <% end %>
+        <% if can? :destroy, datum %>
+          <td><%= link_to 'Destroy', datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @posts %>
+<br>
+<% if can? :create, @data %>
+<%= link_to 'New Wayleave', new_datum_path %>
+<% end %>

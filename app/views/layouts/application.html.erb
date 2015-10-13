@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- MADE BY THE ULTIMATE WEB DEVELOPER -->
+    <!-- MAINA KELVIN CHEGE -->
+    <!-- +254710345130 -->
+    <!-- KENYA (254) -->
+    <title>Way Leave</title>
+    <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track' => true %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+    <!-- Bootstrap Core CSS -->
+    <link href="public/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="public/css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        <%= link_to 'FON Way Leave Database', data_path %>
+                    </a>
+                </li>
+                <li>
+                    <%= link_to 'Show Wayleaves', data_path %>
+                </li>
+                <li>
+                <% @datum = Datum.new %>
+                <% if can? :create, @datum %>
+                    <%= link_to 'New Wayleave', new_datum_path %>
+                    <% end %>
+                </li>
+                <li>
+
+                    <% if current_user %>
+                        <%= link_to "Logged in as #{current_user.first_name} (log out?)", log_out_path %>
+                    <% else %>
+                    <% if can? :create, @datum %>
+                        <%= link_to "sign Up", sign_up_path %> 
+                    <% end %>
+                        <%= link_to "Log in", log_in_path %>
+                    <% end %>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                    <body>
+                        
+                        <%= form_tag(data_path, :method => "get", id: "search-form") do %>
+                        <p>
+                        <%= text_field_tag :search, params[:search], placeholder: "Search Wayleaves", class: "form-control" %>
+                        </p>
+                        <p>
+                        <%= submit_tag "Search", class: "form-control btn btn-primary" %>
+                        </p><hr>
+                        <% end %>
+                        <p id="notice"><%= notice %></p>
+                        
+                        <%= yield %>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

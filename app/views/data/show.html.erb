@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Permit no:</strong>
+  <%= @datum.permit_no %>
+</p>
+
+<p>
+  <strong>Route:</strong>
+  <%= @datum.route %>
+</p>
+
+<p>
+  <strong>Carriageway:</strong>
+  <%= @datum.carriageway %>
+</p>
+
+<p>
+  <strong>Footpath:</strong>
+  <%= @datum.footpath %>
+</p>
+
+<p>
+  <strong>Verge:</strong>
+  <%= @datum.verge %>
+</p>
+
+<p>
+  <strong>Amount paid:</strong>
+  <%= @datum.amount_paid %>
+</p>
+
+<p>
+  <strong>Date paid:</strong>
+  <%= @datum.date_paid %>
+</p>
+
+<p>
+  <strong>Renewal Date:</strong>
+  <%= @datum.Renewal_date %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @datum.Remarks %>
+</p>
+
+<p><strong>Permit:</strong>
+  <%= image_tag "pdf.png" %>
+  <%= link_to("#{@datum.permit}",controller: 'data',action: 'download',id: @datum.id,permit: @datum.permit) %>
+</p>
+
+<p><strong>Wayleave:</strong>
+  <%= image_tag "pdf.png" %>
+  <%= link_to("#{@datum.wayleave_file}",controller: 'data',action: 'downloadwayleave',id: @datum.id, wayleave_file: @datum.wayleave_file) %>
+</p>
+
+<p><strong>Invoice Form:</strong>
+  <%= image_tag "pdf.png" %>
+  <%= link_to("#{@datum.invoice}",controller: 'data',action: 'downloadsof',id: @datum.id,invoice: @datum.invoice) %>
+</p>
+
+
+<% if can? :update, @datum %>
+<%= link_to 'Edit', edit_datum_path(@datum) %> |
+<% end %>
+<%= link_to 'Back', data_path %>

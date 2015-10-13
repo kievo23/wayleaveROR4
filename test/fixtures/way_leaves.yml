@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  permit_no: MyString
+  route: MyString
+  carriageway: MyString
+  footpath: MyString
+  verge: MyString
+  amount_paid: MyString
+  date_paid: MyString
+  Remarks: MyText
+  permit: MyString
+  wayleave_file: MyString
+
+two:
+  permit_no: MyString
+  route: MyString
+  carriageway: MyString
+  footpath: MyString
+  verge: MyString
+  amount_paid: MyString
+  date_paid: MyString
+  Remarks: MyText
+  permit: MyString
+  wayleave_file: MyString

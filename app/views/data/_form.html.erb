@@ -1,0 +1,76 @@
+<%= form_for(@datum) do |f| %>
+
+
+  <% if @datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@datum.errors.count, "error") %> prohibited this wayleave from being saved:</h2>
+
+      <ul>
+      <% @datum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-9">
+    <div class="field form-group">
+      <%= f.label :permit_no %><br>
+      <%= f.text_field :permit_no, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :route %><br>
+      <%= f.text_field :route, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :carriageway %><br>
+      <%= f.text_field :carriageway, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :footpath %><br>
+      <%= f.text_field :footpath, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :verge %><br>
+      <%= f.text_field :verge, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :amount_paid %><br>
+      <%= f.text_field :amount_paid, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :date_paid %><br>
+      <%= f.text_field :date_paid, "data-provide": "datepicker", class: "form-control"  %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :Renewal_date %><br>
+      <%= f.text_field :Renewal_date, "data-provide": "datepicker", class: "form-control"  %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :Remarks %><br>
+      <%= f.text_area :Remarks, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :permit %><br>
+      <%= f.file_field :permit, class: "form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :wayleave_file %><br>
+      <%= f.file_field :wayleave_file, class: "form-control" %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :invoice, "Invoice Form" %><br>
+      <%= f.file_field :invoice, class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
+<% end %>
