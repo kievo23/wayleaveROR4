@@ -1,4 +1,4 @@
-# Rails4-Managing wayleave for my company in Kenya
+# Rails4-Managing wayleave for my company
 
 #Rails 4.2.4
 
